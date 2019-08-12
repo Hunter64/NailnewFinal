@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1088717750330",
+    "firebase_url": "https://nailnewfinal.firebaseio.com",
+    "project_id": "nailnewfinal",
+    "storage_bucket": "nailnewfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088717750330:android:9fdf25376d6f51ea",
+        "android_client_info": {
+          "package_name": "com.hector.nailnewfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088717750330-r3jdeoch2iat8hgkckl6prkbqdvkastn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWVxrUi9L8QJUpFFaHEtJxOAsEYJrogkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088717750330-r3jdeoch2iat8hgkckl6prkbqdvkastn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
