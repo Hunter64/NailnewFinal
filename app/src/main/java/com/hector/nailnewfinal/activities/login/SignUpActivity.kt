@@ -1,12 +1,13 @@
-package com.hector.nailnewfinal
+package com.hector.nailnewfinal.activities.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hector.nailnewfinal.R
 
-class LoginActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_sign_up)
     }
 }

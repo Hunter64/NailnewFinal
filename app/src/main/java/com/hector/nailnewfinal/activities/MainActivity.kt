@@ -1,7 +1,8 @@
-package com.hector.nailnewfinal
+package com.hector.nailnewfinal.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hector.nailnewfinal.R
 
 class MainActivity : AppCompatActivity() {
 
