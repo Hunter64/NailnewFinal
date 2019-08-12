@@ -22,7 +22,7 @@
         <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/login_edit_text_height"
                 android:layout_marginTop="150dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/login_edit_text_height"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="32dp"
@@ -54,6 +54,60 @@
                 android:paddingRight="@dimen/login_edit_text_space"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEmail"/>
+
+        <Button
+                android:id="@+id/buttonLogIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_sign_in"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/login_text_xl_size"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/button_ripple_bg"
+        />
+
+        <TextView
+                android:id="@+id/textViewForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_forgot_password"
+                android:textColor="@color/colorSecondaryText"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLogIn"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+                android:id="@+id/buttonLogInGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_button_height"
+                android:text="@string/login_sign_in_google"
+                android:textColor="@color/colorPrimaryText"
+                android:background="@drawable/button_ripple_google"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/textViewForgotPassword"/>
+
+        <Button
+                android:id="@+id/buttonSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_button_height"
+                android:background="@drawable/button_ripple"
+                android:text="@string/login_create_account"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/login_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
