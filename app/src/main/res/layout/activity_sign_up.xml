@@ -21,8 +21,6 @@
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_edit_text_height"
-                android:layout_marginTop="120dp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -33,13 +31,13 @@
                 android:background="@drawable/edittext_rounded"
                 android:paddingLeft="@dimen/login_edit_text_space"
                 android:paddingRight="@dimen/login_edit_text_space"
-        />
+                app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextPassword"/>
 
         <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_edit_text_height"
-                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,49 +49,46 @@
                 android:paddingLeft="@dimen/login_edit_text_space"
                 android:paddingRight="@dimen/login_edit_text_space"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEmail"/>
+                android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/editTextPasswordConfirm"/>
 
         <EditText
                 android:id="@+id/editTextPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_edit_text_height"
-                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="32dp"
                 android:inputType="textPassword"
-                android:hint="@string/login_password"
+                android:hint="@string/login_confirm_password"
                 android:textSize="@dimen/login_text_size"
                 android:background="@drawable/edittext_rounded"
                 android:paddingLeft="@dimen/login_edit_text_space"
                 android:paddingRight="@dimen/login_edit_text_space"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEmail" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/buttonLogIn"/>
+                android:layout_marginBottom="24dp" app:layout_constraintBottom_toTopOf="@+id/buttonLogIn"/>
 
         <Button
                 android:id="@+id/buttonLogIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_sign_in"
+                android:text="@string/login_sign_up"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/login_text_xl_size"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="32dp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="24dp"
                 android:background="@drawable/button_ripple_bg"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"/>
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginBottom="64dp" app:layout_constraintBottom_toTopOf="@+id/buttonGoLogIn"/>
 
         <Button
-                android:id="@+id/buttonSignUp"
+                android:id="@+id/buttonGoLogIn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_button_height"
                 android:background="@drawable/button_ripple"
-                android:text="@string/login_create_account"
+                android:text="@string/login_go_login"
                 android:textColor="@color/colorSecondaryText"
                 android:textSize="@dimen/login_text_size"
                 app:layout_constraintStart_toStartOf="parent"
