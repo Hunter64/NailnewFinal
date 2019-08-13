@@ -17,14 +17,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        if(mAuth.currentUser === null){
-            //If is null is because there aren't an active session, in current User is session actual
-            toast("Nope")
-        }
-        else{
-            toast("Yep")
-            mAuth.signOut()
-        }
+
 
         buttonLogIn.setOnClickListener {
             //When is login this capture email and password and validate this
