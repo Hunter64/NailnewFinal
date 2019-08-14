@@ -39,6 +39,9 @@ dependencies {
 
     //implementation firebase authentication
     implementation 'com.google.firebase:firebase-auth:16.0.5'
+
+    //implementation service Google Account Login
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }
 //Services google firebase
 apply plugin: 'com.google.gms.google-services'
