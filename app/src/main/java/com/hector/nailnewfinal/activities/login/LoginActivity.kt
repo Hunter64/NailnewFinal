@@ -46,13 +46,21 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun logInByEmail(email: String, password: String){
-        mAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){task ->
-                if(task.isSuccessful)
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                if(task.isSuccessful){
                     toast("User is now logged in!")
-
-                else
+                    //User's data
+                    val currentUser = mAuth.currentUser!!
+                    currentUser.displayName
+                    currentUser.email
+                    currentUser.photoUrl
+                    currentUser.phoneNumber
+                    currentUser.isEmailVerified
+                    currentUser.uid
+                }
+                else{
                     toast("An unexpected occurred, please try again")
+                }
 
             }
     }
