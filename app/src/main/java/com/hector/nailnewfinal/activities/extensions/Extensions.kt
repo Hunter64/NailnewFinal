@@ -49,7 +49,7 @@ fun Activity.isValidEmail(email: String): Boolean {
 }
 
 fun Activity.isValidPassword(password: String): Boolean {
-    // Necesita Contener -->    1 Num / 1 Minuscula / 1 Mayuscula / 1 Special / Min Caracteres 4
+    // Password content obligatory -->    1 Num / 1 Min / 1 May / 1 Special / Min Character 4
     val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$"
     val pattern = Pattern.compile(passwordPattern)
     return pattern.matcher(password).matches()
