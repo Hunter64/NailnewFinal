@@ -2,11 +2,9 @@ package com.hector.nailnewfinal.activities.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.hector.nailnewfinal.R
-import com.hector.nailnewfinal.activities.extensions.goToActivity
-import com.hector.nailnewfinal.activities.extensions.toast
+import com.hector.nailnewfinal.activities.extensions.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -23,10 +21,12 @@ class LoginActivity : AppCompatActivity() {
             //When is login this capture email and password and validate this
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
-            if(isValidEmailAndPassword(email, password)){
-                Log.w("----> ", "is email valid")
+
+            if(isValidEmail(email) && isValidPassword(password))
                 logInByEmail(email, password)
-            }
+            else
+                toast("Please make sure all the data is correct!")
+
         }
 
         textViewForgotPassword.setOnClickListener{
@@ -38,6 +38,10 @@ class LoginActivity : AppCompatActivity() {
             goToActivity<SignUpActivity>()
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         }
+
+        editTextEmail.validate { editTextEmail.error = if(isValidEmail(it)) null else "Email isn´t valid!"}
+
+        editTextPassword.validate { editTextPassword.error = if(isValidPassword(it)) null else "Password isn't valid!" }
 
     }
 
@@ -53,7 +57,4 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun isValidEmailAndPassword(email: String, password: String): Boolean{
-        return !email.isNullOrEmpty() && !password.isNullOrEmpty()
-    }
 }
