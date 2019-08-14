@@ -3,14 +3,10 @@ package com.hector.nailnewfinal.activities.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Patterns
 import com.hector.nailnewfinal.R
 import com.google.firebase.auth.FirebaseAuth
 import com.hector.nailnewfinal.activities.extensions.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import java.util.regex.Pattern
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -34,11 +30,12 @@ class SignUpActivity : AppCompatActivity() {
         buttonSignUp.setOnClickListener {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
+            val confirmPassword = editTextConfirmPassword.text.toString()
 
-            if (isValidEmailAndPassword(email, password))
+            if(isValidEmail(email) && isValidPassword(password) && isValidConfirmPassword(password, confirmPassword))
                 signUpByEmail(email, password)
             else
-                toast("Please fill all the data and confirm password is correct!")
+                toast("Please make sure all the data is correct!")
         }
 
         editTextEmail.validate { editTextEmail.error = if(isValidEmail(it)) null else "Email isn't valid!" }
@@ -62,9 +59,4 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun isValidEmailAndPassword(email: String, password: String): Boolean {
-        return !email.isNullOrEmpty() &&
-                !password.isNullOrEmpty() &&
-                password === editTextConfirmPassword.text.toString()
-    }
 }
