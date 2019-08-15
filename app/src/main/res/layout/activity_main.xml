@@ -19,6 +19,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             app:elevation="16dp"
+            app:menu="@menu/bottom_navigation_menu"
     />
 
 

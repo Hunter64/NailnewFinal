@@ -28,7 +28,7 @@ class MainActivity : ToolbarActivity() {
         toolbarToLoad(toolbarView as Toolbar)
     }
 
-    private fun getPagerAdapter(): PagerAdapter{
+    private fun getPagerAdapter(): PagerAdapter {
         adapter = PagerAdapter(supportFragmentManager)
         adapter.addFragment(ChatFragment())
         adapter.addFragment(InfoFragment())
@@ -36,20 +36,23 @@ class MainActivity : ToolbarActivity() {
         return adapter
     }
 
-    private fun setUpViewPager(adapter: PagerAdapter){
+    private fun setUpViewPager(adapter: PagerAdapter) {
         viewPager.adapter = adapter
-        viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
-                if(prevBottomSelected == null){
+                //Selected Position in View Pager
+                if (prevBottomSelected == null) {
+                    //If is null is first time
                     bottomNavigation.menu.getItem(0).isChecked = false
-                }
-                else{
+                } else {
+                    //Else any position and checked false, for when i move to other will inactive
                     prevBottomSelected!!.isChecked = false
                 }
+                //Here activate last menu, represented by prevBottomSelected, for when other interaction if is null or not this will inactivate
                 bottomNavigation.menu.getItem(position).isChecked = true
                 prevBottomSelected = bottomNavigation.menu.getItem(position)
             }
@@ -57,7 +60,11 @@ class MainActivity : ToolbarActivity() {
         })
     }
 
-    private fun setUpBottomNavigationBar(){
-
+    private fun setUpBottomNavigationBar() {
+//        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.
+//            }
+//        }
     }
 }
