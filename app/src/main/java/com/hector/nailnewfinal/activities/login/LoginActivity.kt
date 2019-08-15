@@ -1,12 +1,15 @@
 package com.hector.nailnewfinal.activities.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.auth.api.Auth
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.hector.nailnewfinal.R
 import com.hector.nailnewfinal.activities.extensions.*
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,6 +19,8 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
     private val mAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     private val mGoogleAPiClient: GoogleApiClient by lazy { getGoogleApiClient() }
+
+    private val rescueCodeGoogleSignIn = 99 // -> Any number, this is only a flag for rescue code and compare than request
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,11 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         buttonCreateAccount.setOnClickListener {
             goToActivity<SignUpActivity>()
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+        }
+
+        buttonLogInGoogle.setOnClickListener {
+            val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleAPiClient)
+            startActivityForResult(signInIntent, rescueCodeGoogleSignIn)
         }
 
         editTextEmail.validate { editTextEmail.error = if(isValidEmail(it)) null else "Email isn´t valid!"}
@@ -75,9 +85,31 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
             .build()
 
         return  GoogleApiClient.Builder(this)
-            .enableAutoManage(this, this)
+            .enableAutoManage(this, this) //context and listener
             .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
             .build()
+    }
+
+    private fun loginByGoogleAccountIntoFirebase(googleAccount: GoogleSignInAccount){
+        val credential = GoogleAuthProvider.getCredential(googleAccount.idToken, null)
+        //Receive data credential from google
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this){
+            toast("Sign in by Google!!")
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == rescueCodeGoogleSignIn){
+            // -> Come login with Google
+            val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
+            if(result.isSuccess){
+                // -> Validation google is correct for login
+                val account = result.signInAccount
+                loginByGoogleAccountIntoFirebase(account!!)
+            }
+        }
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
