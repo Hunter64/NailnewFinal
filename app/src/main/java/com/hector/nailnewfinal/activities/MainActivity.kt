@@ -26,6 +26,10 @@ class MainActivity : ToolbarActivity() {
         setContentView(R.layout.activity_main)
 
         toolbarToLoad(toolbarView as Toolbar)
+
+        setUpViewPager(getPagerAdapter())
+
+        setUpBottomNavigationBar()
     }
 
     private fun getPagerAdapter(): PagerAdapter {
@@ -61,10 +65,19 @@ class MainActivity : ToolbarActivity() {
     }
 
     private fun setUpBottomNavigationBar() {
-//        bottomNavigation.setOnNavigationItemSelectedListener { item ->
-//            when (item.itemId) {
-//                R.id.
-//            }
-//        }
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_nav_info -> {
+                    viewPager.currentItem = 0 ; true
+                }
+                R.id.bottom_nav_rates -> {
+                    viewPager.currentItem = 1 ; true
+                }
+                R.id.bottom_nav_chat -> {
+                    viewPager.currentItem = 2 ; true
+                }
+                else -> false
+            }
+        }
     }
 }
