@@ -1,11 +1,13 @@
 package com.hector.nailnewfinal.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
+import com.hector.mylibrary.ToolbarActivity
 import com.hector.nailnewfinal.R
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ToolbarActivity() {
 
     private val mAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
@@ -13,6 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mAuth.signOut()
+        toolbarToLoad(toolbarView as Toolbar)
     }
 }

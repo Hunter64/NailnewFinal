@@ -42,6 +42,9 @@ dependencies {
 
     //implementation service Google Account Login
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    //implementation for library module "myLibrary"
+    implementation project(':mylibrary')
 }
 //Services google firebase
 apply plugin: 'com.google.gms.google-services'
