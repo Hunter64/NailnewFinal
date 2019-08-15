@@ -11,6 +11,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.hector.nailnewfinal.R
+import com.hector.nailnewfinal.activities.MainActivity
 import com.hector.nailnewfinal.activities.extensions.*
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -95,6 +96,12 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         //Receive data credential from google
         mAuth.signInWithCredential(credential).addOnCompleteListener(this){
             toast("Sign in by Google!!")
+            if(mGoogleAPiClient.isConnected){
+                Auth.GoogleSignInApi.signOut(mGoogleAPiClient)
+            }
+            goToActivity<MainActivity> {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
         }
     }
 
